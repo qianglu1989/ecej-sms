@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ecej.nove.sms.po.SysSmsRecentRecordPo">
+	<resultMap id="BaseResultMap" type="com.ecej.nove.sms.po.SysSmsRecentRecordPo">
+		<id column="recent_record_id" property="recentRecordId" />
+		<result column="work_order_no" property="workOrderNo" />
+		<result column="receive_mobile" property="receiveMobile" />
+		<result column="content" property="content" />
+		<result column="send_time" property="sendTime" />
+		<result column="send_status" property="sendStatus" />
+		<result column="sms_type" property="smsType" />
+		<result column="sms_source" property="smsSource" />
+		<result column="send_priority" property="sendPriority" />
+		<result column="admin_id" property="adminId" />
+		<result column="service_back_info" property="serviceBackInfo" />
+		<result column="send_fail_count" property="sendFailCount" />
+		<result column="group_send_id" property="groupSendId" />
+		<result column="sms_sign" property="smsSign" />
+		<result column="update_time" property="updateTime" />
+		<result column="create_time" property="createTime" />
+	</resultMap>
+
+	<sql id="Table_Name">
+		sys_sms_recent_record
+	</sql>
+
+	<sql id="Base_Column">
+		recent_record_id,
+		work_order_no,
+		receive_mobile,
+		content,
+		send_time,
+		send_status,
+		sms_type,
+		sms_source,
+		send_priority,
+		admin_id,
+		service_back_info,
+		send_fail_count,
+		group_send_id,
+		sms_sign,
+		update_time,
+		create_time
+	</sql>
+
+	<sql id="Base_Where">
+		<trim suffixOverrides="AND">
+		<if test="recentRecordId != null">
+			recent_record_id= #{recentRecordId}
+	           AND 
+		</if>
+		<if test="workOrderNo != null">
+			work_order_no= #{workOrderNo}
+	           AND 
+		</if>
+		<if test="receiveMobile != null">
+			receive_mobile= #{receiveMobile}
+	           AND 
+		</if>
+		<if test="content != null">
+			content= #{content}
+	           AND 
+		</if>
+		<if test="sendTime != null">
+			send_time= #{sendTime}
+	           AND 
+		</if>
+		<if test="sendStatus != null">
+			send_status= #{sendStatus}
+	           AND 
+		</if>
+		<if test="smsType != null">
+			sms_type= #{smsType}
+	           AND 
+		</if>
+		<if test="smsSource != null">
+			sms_source= #{smsSource}
+	           AND 
+		</if>
+		<if test="sendPriority != null">
+			send_priority= #{sendPriority}
+	           AND 
+		</if>
+		<if test="adminId != null">
+			admin_id= #{adminId}
+	           AND 
+		</if>
+		<if test="serviceBackInfo != null">
+			service_back_info= #{serviceBackInfo}
+	           AND 
+		</if>
+		<if test="sendFailCount != null">
+			send_fail_count= #{sendFailCount}
+	           AND 
+		</if>
+		<if test="groupSendId != null">
+			group_send_id= #{groupSendId}
+	           AND 
+		</if>
+		<if test="smsSign != null">
+			sms_sign= #{smsSign}
+	           AND 
+		</if>
+		<if test="updateTime != null">
+			update_time= #{updateTime}
+	           AND 
+		</if>
+		<if test="createTime != null">
+			create_time= #{createTime}
+		</if>
+		</trim>
+	</sql>
+	
+    <sql id="Base_Select">
+			select
+		<include refid="Base_Column" />
+		from
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</sql>
+
+
+
+	<insert id="insert" parameterType="com.ecej.nove.sms.po.SysSmsRecentRecordPo" useGeneratedKeys="true" keyProperty="recentRecordId">
+		insert into
+		<include refid="Table_Name" />
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+	<if test="recentRecordId != null">
+		recent_record_id,
+	</if>
+	<if test="workOrderNo != null">
+		work_order_no,
+	</if>
+	<if test="receiveMobile != null">
+		receive_mobile,
+	</if>
+	<if test="content != null">
+		content,
+	</if>
+	<if test="sendTime != null">
+		send_time,
+	</if>
+	<if test="sendStatus != null">
+		send_status,
+	</if>
+	<if test="smsType != null">
+		sms_type,
+	</if>
+	<if test="smsSource != null">
+		sms_source,
+	</if>
+	<if test="sendPriority != null">
+		send_priority,
+	</if>
+	<if test="adminId != null">
+		admin_id,
+	</if>
+	<if test="serviceBackInfo != null">
+		service_back_info,
+	</if>
+	<if test="sendFailCount != null">
+		send_fail_count,
+	</if>
+	<if test="groupSendId != null">
+		group_send_id,
+	</if>
+	<if test="smsSign != null">
+		sms_sign,
+	</if>
+	<if test="updateTime != null">
+		update_time,
+	</if>
+	<if test="createTime != null">
+		create_time,
+	</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+	<if test="recentRecordId != null">
+		#{recentRecordId},
+	</if>
+	<if test="workOrderNo != null">
+		#{workOrderNo},
+	</if>
+	<if test="receiveMobile != null">
+		#{receiveMobile},
+	</if>
+	<if test="content != null">
+		#{content},
+	</if>
+	<if test="sendTime != null">
+		#{sendTime},
+	</if>
+	<if test="sendStatus != null">
+		#{sendStatus},
+	</if>
+	<if test="smsType != null">
+		#{smsType},
+	</if>
+	<if test="smsSource != null">
+		#{smsSource},
+	</if>
+	<if test="sendPriority != null">
+		#{sendPriority},
+	</if>
+	<if test="adminId != null">
+		#{adminId},
+	</if>
+	<if test="serviceBackInfo != null">
+		#{serviceBackInfo},
+	</if>
+	<if test="sendFailCount != null">
+		#{sendFailCount},
+	</if>
+	<if test="groupSendId != null">
+		#{groupSendId},
+	</if>
+	<if test="smsSign != null">
+		#{smsSign},
+	</if>
+	<if test="updateTime != null">
+		#{updateTime},
+	</if>
+	<if test="createTime != null">
+		#{createTime},
+	</if>
+		</trim>
+	</insert>
+	
+	<insert id="insertList" parameterType="java.util.List" >
+	    insert into 
+		<include refid="Table_Name" />
+			(	
+
+					work_order_no
+			           ,
+
+					receive_mobile
+			           ,
+
+					content
+			           ,
+
+					send_time
+			           ,
+
+					send_status
+			           ,
+
+					sms_type
+			           ,
+
+					sms_source
+			           ,
+
+					send_priority
+			           ,
+
+					admin_id
+			           ,
+
+					service_back_info
+			           ,
+
+					send_fail_count
+			           ,
+
+					group_send_id
+			           ,
+
+					sms_sign
+			           ,
+
+					update_time
+			           ,
+
+					create_time
+			) 
+	    values
+	    <foreach collection="list" item="item" separator=",">
+			(	
+
+						#{item.workOrderNo}
+				           ,
+
+						#{item.receiveMobile}
+				           ,
+
+						#{item.content}
+				           ,
+
+						#{item.sendTime}
+				           ,
+
+						#{item.sendStatus}
+				           ,
+
+						#{item.smsType}
+				           ,
+
+						#{item.smsSource}
+				           ,
+
+						#{item.sendPriority}
+				           ,
+
+						#{item.adminId}
+				           ,
+
+						#{item.serviceBackInfo}
+				           ,
+
+						#{item.sendFailCount}
+				           ,
+
+						#{item.groupSendId}
+				           ,
+
+						#{item.smsSign}
+				           ,
+
+						#{item.updateTime}
+				           ,
+
+						#{item.createTime}
+			)
+	    </foreach>
+	 </insert>
+
+	<update id="update" parameterType="com.ecej.nove.sms.po.SysSmsRecentRecordPo">
+		update
+		<include refid="Table_Name" />
+		<set>
+	<if test="recentRecordId != null">
+		recent_record_id=#{recentRecordId},
+	</if>
+	<if test="workOrderNo != null">
+		work_order_no=#{workOrderNo},
+	</if>
+	<if test="receiveMobile != null">
+		receive_mobile=#{receiveMobile},
+	</if>
+	<if test="content != null">
+		content=#{content},
+	</if>
+	<if test="sendTime != null">
+		send_time=#{sendTime},
+	</if>
+	<if test="sendStatus != null">
+		send_status=#{sendStatus},
+	</if>
+	<if test="smsType != null">
+		sms_type=#{smsType},
+	</if>
+	<if test="smsSource != null">
+		sms_source=#{smsSource},
+	</if>
+	<if test="sendPriority != null">
+		send_priority=#{sendPriority},
+	</if>
+	<if test="adminId != null">
+		admin_id=#{adminId},
+	</if>
+	<if test="serviceBackInfo != null">
+		service_back_info=#{serviceBackInfo},
+	</if>
+	<if test="sendFailCount != null">
+		send_fail_count=#{sendFailCount},
+	</if>
+	<if test="groupSendId != null">
+		group_send_id=#{groupSendId},
+	</if>
+	<if test="smsSign != null">
+		sms_sign=#{smsSign},
+	</if>
+	<if test="updateTime != null">
+		update_time=#{updateTime},
+	</if>
+	<if test="createTime != null">
+		create_time=#{createTime},
+	</if>
+		</set>
+		where 
+			      recent_record_id=#{recentRecordId}
+	</update>
+
+	<update id="updateByEntity" parameterType="com.ecej.nove.sms.po.SysSmsRecentRecordPo">
+		UPDATE
+		<include refid="Table_Name" />
+		<set>
+			<if test="s.workOrderNo != null">
+                    work_order_no=#{s.workOrderNo},
+			</if>
+			<if test="s.receiveMobile != null">
+                    receive_mobile=#{s.receiveMobile},
+			</if>
+			<if test="s.content != null">
+                    content=#{s.content},
+			</if>
+			<if test="s.sendTime != null">
+                    send_time=#{s.sendTime},
+			</if>
+			<if test="s.sendStatus != null">
+                    send_status=#{s.sendStatus},
+			</if>
+			<if test="s.smsType != null">
+                    sms_type=#{s.smsType},
+			</if>
+			<if test="s.smsSource != null">
+                    sms_source=#{s.smsSource},
+			</if>
+			<if test="s.sendPriority != null">
+                    send_priority=#{s.sendPriority},
+			</if>
+			<if test="s.adminId != null">
+                    admin_id=#{s.adminId},
+			</if>
+			<if test="s.serviceBackInfo != null">
+                    service_back_info=#{s.serviceBackInfo},
+			</if>
+			<if test="s.sendFailCount != null">
+                    send_fail_count=#{s.sendFailCount},
+			</if>
+			<if test="s.groupSendId != null">
+                    group_send_id=#{s.groupSendId},
+			</if>
+			<if test="s.smsSign != null">
+                    sms_sign=#{s.smsSign},
+			</if>
+			<if test="s.updateTime != null">
+                    update_time=#{s.updateTime},
+			</if>
+			<if test="s.createTime != null">
+                    create_time=#{s.createTime}
+			</if>
+		</set>
+		<where> 
+			<trim prefix="(" suffix=")" suffixOverrides="AND">
+			<if test="w.recentRecordId != null">
+                    recent_record_id=#{w.recentRecordId}
+	                   AND 
+ 			</if>
+			<if test="w.workOrderNo != null">
+                    work_order_no=#{w.workOrderNo}
+	                   AND 
+ 			</if>
+			<if test="w.receiveMobile != null">
+                    receive_mobile=#{w.receiveMobile}
+	                   AND 
+ 			</if>
+			<if test="w.content != null">
+                    content=#{w.content}
+	                   AND 
+ 			</if>
+			<if test="w.sendTime != null">
+                    send_time=#{w.sendTime}
+	                   AND 
+ 			</if>
+			<if test="w.sendStatus != null">
+                    send_status=#{w.sendStatus}
+	                   AND 
+ 			</if>
+			<if test="w.smsType != null">
+                    sms_type=#{w.smsType}
+	                   AND 
+ 			</if>
+			<if test="w.smsSource != null">
+                    sms_source=#{w.smsSource}
+	                   AND 
+ 			</if>
+			<if test="w.sendPriority != null">
+                    send_priority=#{w.sendPriority}
+	                   AND 
+ 			</if>
+			<if test="w.adminId != null">
+                    admin_id=#{w.adminId}
+	                   AND 
+ 			</if>
+			<if test="w.serviceBackInfo != null">
+                    service_back_info=#{w.serviceBackInfo}
+	                   AND 
+ 			</if>
+			<if test="w.sendFailCount != null">
+                    send_fail_count=#{w.sendFailCount}
+	                   AND 
+ 			</if>
+			<if test="w.groupSendId != null">
+                    group_send_id=#{w.groupSendId}
+	                   AND 
+ 			</if>
+			<if test="w.smsSign != null">
+                    sms_sign=#{w.smsSign}
+	                   AND 
+ 			</if>
+			<if test="w.updateTime != null">
+                    update_time=#{w.updateTime}
+	                   AND 
+ 			</if>
+			<if test="w.createTime != null">
+                    create_time=#{w.createTime}
+ 			</if>
+			</trim>
+		</where>
+	</update>
+
+	<delete id="delete" parameterType="com.ecej.nove.sms.po.SysSmsRecentRecordPo">
+		delete from
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</delete>
+
+	<select id="count" parameterType="java.util.Map" resultType="int">
+		select count(1) from
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</select>
+
+	<select id="selectOne" parameterType="com.ecej.nove.sms.po.SysSmsRecentRecordPo" resultMap="BaseResultMap">
+	  <include refid="Base_Select" />
+	</select>
+
+	<select id="selectList"  parameterType="com.ecej.nove.sms.po.SysSmsRecentRecordPo" resultMap="BaseResultMap">
+	    <include refid="Base_Select" />
+	</select>
+		
+
+     <select id="selectForUpdate" parameterType="com.ecej.nove.sms.po.SysSmsRecentRecordPo" resultMap="BaseResultMap" useCache="false">
+		 <include refid="Base_Select" />
+		for update
+	</select>
+
+	<!-- 查询一周以前的记录 -->
+	<select id="findWeekBefore" resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column" />
+		FROM
+		<include refid="Table_Name" />
+		WHERE
+		send_time
+		<![CDATA[
+					<
+				]]>
+		DATE_SUB(CURDATE(), INTERVAL 1 WEEK)
+	</select>
+</mapper>

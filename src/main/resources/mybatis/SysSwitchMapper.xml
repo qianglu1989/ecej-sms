@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ecej.nove.sms.po.SysSwitchPo">
+	<resultMap id="BaseResultMap" type="com.ecej.nove.sms.po.SysSwitchPo">
+		<id column="switch_id" property="switchId" />
+		<result column="switch_ident_key" property="switchIdentKey" />
+		<result column="switch_chinese_name" property="switchChineseName" />
+		<result column="close_flag" property="closeFlag" />
+		<result column="update_user" property="updateUser" />
+		<result column="update_time" property="updateTime" />
+	</resultMap>
+
+	<sql id="Table_Name">
+		sys_switch
+	</sql>
+
+	<sql id="Base_Column">
+		switch_id,
+		switch_ident_key,
+		switch_chinese_name,
+		close_flag,
+		update_user,
+		update_time
+	</sql>
+
+	<sql id="Base_Where">
+		<trim suffixOverrides="AND">
+		<if test="switchId != null">
+			switch_id= #{switchId}
+	           AND 
+		</if>
+		<if test="switchIdentKey != null">
+			switch_ident_key= #{switchIdentKey}
+	           AND 
+		</if>
+		<if test="switchChineseName != null">
+			switch_chinese_name= #{switchChineseName}
+	           AND 
+		</if>
+		<if test="closeFlag != null">
+			close_flag= #{closeFlag}
+	           AND 
+		</if>
+		<if test="updateUser != null">
+			update_user= #{updateUser}
+	           AND 
+		</if>
+		<if test="updateTime != null">
+			update_time= #{updateTime}
+		</if>
+		</trim>
+	</sql>
+	
+    <sql id="Base_Select">
+			select
+		<include refid="Base_Column" />
+		from
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</sql>
+
+
+
+	<insert id="insert" parameterType="com.ecej.nove.sms.po.SysSwitchPo" useGeneratedKeys="true" keyProperty="switchId">
+		insert into
+		<include refid="Table_Name" />
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+	<if test="switchId != null">
+		switch_id,
+	</if>
+	<if test="switchIdentKey != null">
+		switch_ident_key,
+	</if>
+	<if test="switchChineseName != null">
+		switch_chinese_name,
+	</if>
+	<if test="closeFlag != null">
+		close_flag,
+	</if>
+	<if test="updateUser != null">
+		update_user,
+	</if>
+	<if test="updateTime != null">
+		update_time,
+	</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+	<if test="switchId != null">
+		#{switchId},
+	</if>
+	<if test="switchIdentKey != null">
+		#{switchIdentKey},
+	</if>
+	<if test="switchChineseName != null">
+		#{switchChineseName},
+	</if>
+	<if test="closeFlag != null">
+		#{closeFlag},
+	</if>
+	<if test="updateUser != null">
+		#{updateUser},
+	</if>
+	<if test="updateTime != null">
+		#{updateTime},
+	</if>
+		</trim>
+	</insert>
+	
+	<insert id="insertList" parameterType="java.util.List" >
+	    insert into 
+		<include refid="Table_Name" />
+			(	
+
+					switch_ident_key
+			           ,
+
+					switch_chinese_name
+			           ,
+
+					close_flag
+			           ,
+
+					update_user
+			           ,
+
+					update_time
+			) 
+	    values
+	    <foreach collection="list" item="item" separator=",">
+			(	
+
+						#{item.switchIdentKey}
+				           ,
+
+						#{item.switchChineseName}
+				           ,
+
+						#{item.closeFlag}
+				           ,
+
+						#{item.updateUser}
+				           ,
+
+						#{item.updateTime}
+			)
+	    </foreach>
+	 </insert>
+
+	<update id="update" parameterType="com.ecej.nove.sms.po.SysSwitchPo">
+		update
+		<include refid="Table_Name" />
+		<set>
+	<if test="switchId != null">
+		switch_id=#{switchId},
+	</if>
+	<if test="switchIdentKey != null">
+		switch_ident_key=#{switchIdentKey},
+	</if>
+	<if test="switchChineseName != null">
+		switch_chinese_name=#{switchChineseName},
+	</if>
+	<if test="closeFlag != null">
+		close_flag=#{closeFlag},
+	</if>
+	<if test="updateUser != null">
+		update_user=#{updateUser},
+	</if>
+	<if test="updateTime != null">
+		update_time=#{updateTime},
+	</if>
+		</set>
+		where 
+			      switch_id=#{switchId}
+	</update>
+
+	<update id="updateByEntity" parameterType="com.ecej.nove.sms.po.SysSwitchPo">
+		UPDATE
+		<include refid="Table_Name" />
+		<set>
+			<if test="s.switchIdentKey != null">
+                    switch_ident_key=#{s.switchIdentKey},
+			</if>
+			<if test="s.switchChineseName != null">
+                    switch_chinese_name=#{s.switchChineseName},
+			</if>
+			<if test="s.closeFlag != null">
+                    close_flag=#{s.closeFlag},
+			</if>
+			<if test="s.updateUser != null">
+                    update_user=#{s.updateUser},
+			</if>
+			<if test="s.updateTime != null">
+                    update_time=#{s.updateTime}
+			</if>
+		</set>
+		<where> 
+			<trim prefix="(" suffix=")" suffixOverrides="AND">
+			<if test="w.switchId != null">
+                    switch_id=#{w.switchId}
+	                   AND 
+ 			</if>
+			<if test="w.switchIdentKey != null">
+                    switch_ident_key=#{w.switchIdentKey}
+	                   AND 
+ 			</if>
+			<if test="w.switchChineseName != null">
+                    switch_chinese_name=#{w.switchChineseName}
+	                   AND 
+ 			</if>
+			<if test="w.closeFlag != null">
+                    close_flag=#{w.closeFlag}
+	                   AND 
+ 			</if>
+			<if test="w.updateUser != null">
+                    update_user=#{w.updateUser}
+	                   AND 
+ 			</if>
+			<if test="w.updateTime != null">
+                    update_time=#{w.updateTime}
+ 			</if>
+			</trim>
+		</where>
+	</update>
+
+	<delete id="delete" parameterType="com.ecej.nove.sms.po.SysSwitchPo">
+		delete from
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</delete>
+
+	<select id="count" parameterType="java.util.Map" resultType="int">
+		select count(1) from
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</select>
+
+	<select id="selectOne" parameterType="com.ecej.nove.sms.po.SysSwitchPo" resultMap="BaseResultMap">
+	  <include refid="Base_Select" />
+	</select>
+
+	<select id="selectList"  parameterType="com.ecej.nove.sms.po.SysSwitchPo" resultMap="BaseResultMap">
+	    <include refid="Base_Select" />
+	</select>
+		
+
+     <select id="selectForUpdate" parameterType="com.ecej.nove.sms.po.SysSwitchPo" resultMap="BaseResultMap" useCache="false">
+		 <include refid="Base_Select" />
+		for update
+	</select>
+	
+
+</mapper>

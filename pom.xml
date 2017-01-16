@@ -1,0 +1,197 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.ecej</groupId>
+	<artifactId>ecej-sms</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.4.0.RELEASE</version>
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<ecej.zookeeper.connect>localhost:2181</ecej.zookeeper.connect>
+				<!-- <ecej.zookeeper.connect>10.4.89.152:2181,10.4.89.153:2181,10.4.89.154:2181</ecej.zookeeper.connect> -->
+
+				<!-- dubbo -->
+				<ecej.dubbo.provider.timeout>10000</ecej.dubbo.provider.timeout>
+				<ecej.dubbo.provider.retries>0</ecej.dubbo.provider.retries>
+				<ecej.dubbo.provider.version>1.0</ecej.dubbo.provider.version>
+				<ecej.dubbo.provider.connections>5</ecej.dubbo.provider.connections>
+				<ecej.dubbo.protocol.threadpool>fixed</ecej.dubbo.protocol.threadpool>
+				<ecej.dubbo.protocol.threads>500</ecej.dubbo.protocol.threads>
+
+				<!-- dubbo cache file path -->
+				<ecej.dubbo.cache.path.base>/data/dubbo/cache/base.cache</ecej.dubbo.cache.path.base>
+
+				<!-- redis -->
+				<ecej.redis.cluster>10.4.89.161:6379</ecej.redis.cluster>
+				<ecej.redis.pool.maxTotal>1000</ecej.redis.pool.maxTotal>
+				<ecej.redis.pool.maxIdle>10</ecej.redis.pool.maxIdle>
+				<ecej.redis.pool.maxWaitMillis>3000</ecej.redis.pool.maxWaitMillis>
+				<ecej.redis.timeOut>5000</ecej.redis.timeOut>
+				<ecej.redis.maxRedirections>10</ecej.redis.maxRedirections>
+
+				<!-- MQ -->
+				<ecej.mq.url>failover:(tcp://10.4.89.155:61616,tcp://10.4.89.156:61616,tcp://10.4.89.157:61616)?randomize=false</ecej.mq.url>
+				<ecej.mq.factor.username></ecej.mq.factor.username>
+				<ecej.mq.factor.password></ecej.mq.factor.password>
+				<ecej.mq.pool.maxConnections>5</ecej.mq.pool.maxConnections>
+				<ecej.mq.pool.activeSessionPerConnection>2</ecej.mq.pool.activeSessionPerConnection>
+				<ecej.mq.pool.expirationCheckMillis>3000</ecej.mq.pool.expirationCheckMillis>
+
+
+				<!-- druid config -->
+				<ecej.druid.initialSize>0</ecej.druid.initialSize>
+				<ecej.druid.maxActive>500</ecej.druid.maxActive>
+				<ecej.druid.minIdle>50</ecej.druid.minIdle>
+				<ecej.druid.maxWait>60000</ecej.druid.maxWait>
+				<ecej.druid.removeAbandoned>true</ecej.druid.removeAbandoned>
+				<ecej.druid.removeAbandonedTimeout>180</ecej.druid.removeAbandonedTimeout>
+				<ecej.druid.timeBetweenEvictionRunsMillis>60000</ecej.druid.timeBetweenEvictionRunsMillis>
+				<ecej.druid.minEvictableIdleTimeMillis>3600000</ecej.druid.minEvictableIdleTimeMillis>
+				<ecej.druid.validationQuery>SELECT USER()</ecej.druid.validationQuery>
+				<ecej.druid.testWhileIdle>true</ecej.druid.testWhileIdle>
+				<ecej.druid.testOnBorrow>false</ecej.druid.testOnBorrow>
+				<ecej.druid.testOnReturn>false</ecej.druid.testOnReturn>
+				<ecej.druid.filters>mergeStat,config</ecej.druid.filters>
+				<ecej.druid.connectionProperties>config.decrypt=false</ecej.druid.connectionProperties>
+
+				<!-- base -->
+				<ecej.base.datasource.url>jdbc:mysql://localhost:3306/ecejservice?useunicode=true&amp;characterencoding=utf-8&amp;zeroDateTimeBehavior=convertToNull</ecej.base.datasource.url>
+				<ecej.base.datasource.username>root</ecej.base.datasource.username>
+				<ecej.base.datasource.password>root</ecej.base.datasource.password>
+				
+				<!-- SMS -->
+				<!--业务 e城e家 主通道-->
+				<ecej.ecejcommons.sms.service.business.a>http://10.36.128.10/mdwebservice.asmx/SendSms</ecej.ecejcommons.sms.service.business.a>
+				<ecej.ecejcommons.sms.userName.business.a>JT0213</ecej.ecejcommons.sms.userName.business.a>
+				<ecej.ecejcommons.sms.password.business.a>123456</ecej.ecejcommons.sms.password.business.a>
+				<!--业务 新奥-e城e家 主通道(员工)-->
+				<ecej.ecejcommons.sms.service.business.c>http://10.36.128.10/mdwebservice.asmx/SendSms</ecej.ecejcommons.sms.service.business.c>
+				<ecej.ecejcommons.sms.userName.business.c>JT0215</ecej.ecejcommons.sms.userName.business.c>
+				<ecej.ecejcommons.sms.password.business.c>123456</ecej.ecejcommons.sms.password.business.c>
+				<!--营销 e城e家 主通道-->
+				<ecej.ecejcommons.sms.service.marketing.a>http://10.36.128.10/mdwebservice.asmx/SendSms</ecej.ecejcommons.sms.service.marketing.a>
+				<ecej.ecejcommons.sms.userName.marketing.a>JT0214</ecej.ecejcommons.sms.userName.marketing.a>
+				<ecej.ecejcommons.sms.password.marketing.a>123456</ecej.ecejcommons.sms.password.marketing.a>
+				<!--营销 新奥-e城e家 主通道 && 业务 新奥-e城e家 主通道(用户)-->
+				<ecej.ecejcommons.sms.service.marketing.c>http://10.36.128.10/mdwebservice.asmx/SendSms</ecej.ecejcommons.sms.service.marketing.c>
+				<ecej.ecejcommons.sms.userName.marketing.c>JT0216</ecej.ecejcommons.sms.userName.marketing.c>
+				<ecej.ecejcommons.sms.password.marketing.c>123456</ecej.ecejcommons.sms.password.marketing.c>
+				<!--短信评价 新奥-e城e家 主通道-->
+				<ecej.ecejcommons.sms.service.evaluate.c>http://userinterface.vcomcn.com/Opration.aspx</ecej.ecejcommons.sms.service.evaluate.c>
+				<ecej.ecejcommons.sms.userName.evaluate.c>xazgrq8</ecej.ecejcommons.sms.userName.evaluate.c>
+				<ecej.ecejcommons.sms.password.evaluate.c>Wku6E9J9</ecej.ecejcommons.sms.password.evaluate.c>
+				<!--验证码 e城e家 主通道-->
+				<ecej.ecejcommons.sms.service.verification.a>http://sdk.entinfo.cn:8061/mdsmssend.ashx</ecej.ecejcommons.sms.service.verification.a>
+				<ecej.ecejcommons.sms.userName.verification.a>SDK-SKY-010-02966</ecej.ecejcommons.sms.userName.verification.a>
+				<ecej.ecejcommons.sms.password.verification.a>279711</ecej.ecejcommons.sms.password.verification.a>
+				<!--验证码 e城e家 备通道-->
+				<ecej.ecejcommons.sms.service.verification.b>http://userinterface.vcomcn.com/Opration.aspx</ecej.ecejcommons.sms.service.verification.b>
+				<ecej.ecejcommons.sms.userName.verification.b>xazgrq9</ecej.ecejcommons.sms.userName.verification.b>
+				<ecej.ecejcommons.sms.password.verification.b>9iOpM8Ex</ecej.ecejcommons.sms.password.verification.b>
+				
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+	</profiles>
+
+	<dependencies>
+			
+		<dependency>  
+		    <groupId>org.springframework.boot</groupId>  
+		    <artifactId>spring-boot-starter</artifactId>  
+		    <exclusions>  
+		        <exclusion>  
+		            <groupId>org.springframework.boot</groupId>  
+		            <artifactId>spring-boot-starter-logging</artifactId>  
+		        </exclusion>  
+		    </exclusions>  
+		</dependency>  
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-log4j2</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<!--druid -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>1.0.20</version>
+		</dependency>
+		<!-- mybatis 分页插件 -->
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper</artifactId>
+			<version>4.1.6</version>
+		</dependency>
+		<dependency>
+			<groupId>com.nove</groupId>
+			<artifactId>ecej-core</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.zookeeper</groupId>
+					<artifactId>zookeeper</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>${basedir}/src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/*</include>
+				</includes>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+					<testFailureIgnore>true</testFailureIgnore>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
