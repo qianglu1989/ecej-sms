@@ -6,7 +6,7 @@
         <Property name="LOG_HOME">D:\logs\sms</Property>
         <Property name="LOG_PREFIX">${APP_NAME}</Property>
         <Property name="LOG_CHARSET">UTF-8</Property>
-        <Property name="LOG_ROOT_LEVEL">DEBUG</Property>
+        <Property name="LOG_ROOT_LEVEL">INFO</Property>
         <Property name="LOG_DIR">${LOG_HOME}/%d{yyyyMMdd}</Property>
         <Property name="LOG_MSG">- | %d{yyyy-MM-dd HH:mm:ss.SSS} | %level | ${hostName} | %thread | %logger{36} |  %msg | %n</Property>
         <Property name="MAX_FILE_SIZE">50MB</Property>
@@ -17,11 +17,11 @@
             <AppenderRef ref="FILE_ALL"/>
             <AppenderRef ref="FILE_ERROR"/>
         </Root>
-        <Logger name="org.springframework" level="error" additivity="false">
+        <Logger name="org.springframework" level="debug" additivity="false">
         </Logger>
         <Logger name="org.apache.zookeeper" level="error" additivity="false">
         </Logger>
-        <Logger name="org.apache.commons" level="error" additivity="false">
+        <Logger name="org.apache.commons" level="debug" additivity="false">
         </Logger>
     </Loggers>
     <Appenders>
