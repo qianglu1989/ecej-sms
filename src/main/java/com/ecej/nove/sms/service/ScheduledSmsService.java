@@ -35,7 +35,7 @@ public class ScheduledSmsService {
 	private SmsBaseDao smsBaseDao;
 
 	// TODO 待修改时间
-	@Scheduled(fixedRate = 5000)
+	@Scheduled(fixedRate = 50000)
 	public void sendSms() {
 
 		LOG.info("发送短信任务 start...");
@@ -82,7 +82,6 @@ public class ScheduledSmsService {
 				// 短信评价新奥-e城e家
 				asyncSendSmsService.sendSmsXinao3(sms, smsMessage);
 			}
-			break;
 		}
 
 		asyncSendSmsService.backupHis();

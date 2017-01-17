@@ -15,6 +15,6 @@ public class PropertiesConfig {
 
 	@PostConstruct
 	public PropertyBootConfig propertyBootConfig() {
-		return new PropertyBootConfig();
+		return new PropertyBootConfig("/application.properties");
 	}
 }

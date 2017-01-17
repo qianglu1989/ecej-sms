@@ -188,7 +188,6 @@ public class PushSM {
 			map.put("rrid", URLEncoder.encode("", "utf-8"));
 		} catch (UnsupportedEncodingException e) {
 			logger.error(e.getMessage(), e);
-			e.printStackTrace();
 		}
 		try {
 			String response = HttpClientUtils.doPost(SMS_MARKETING_SERVICE_C, map);
