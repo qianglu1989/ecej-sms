@@ -40,7 +40,7 @@ public class MailSendServiceImpl implements MailSendService {
 		message.setBcc(mail.getBcc());
 		message.setCc(mail.getCc());
 		mailSender.send(message);
-		LOG.info(message.toString());
+		LOG.info("发送邮件成功,邮件详情:{}", message.toString());
 	}
 
 	@Override
@@ -66,7 +66,7 @@ public class MailSendServiceImpl implements MailSendService {
 
 			});
 			mailSender.send(mimeMessage);
-			LOG.info(mail.toString());
+			LOG.info("发送邮件成功,邮件详情:{}", mail.toString());
 		} catch (Exception e) {
 			LOG.error("SEND MAIL ERROR !", e);
 		}
