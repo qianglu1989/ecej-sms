@@ -5,7 +5,7 @@
 	<property name="LOG_CHARSET" value="UTF-8" />
 	<property name="LOG_ROOT_LEVEL" value="INFO" />
 	<property name="LOG_DIR" value="${LOG_HOME}/%d{yyyyMMdd}" />
-	<property name="LOG_MSG" value="- | [%X{requestId}] | [%d{yyyyMMdd HH:mm:ss.SSS}] | [%level]|[${hostName}] | [%thread]|[%logger{36}] | %msg|%n "/>
+	<property name="LOG_MSG" value="- | [%X{requestId}] | [%d{yyyyMMdd HH:mm:ss.SSS}] | [%level]|[${HOSTNAME}] | [%thread]|[%logger{36}] | %msg|%n "/>
 	<property name="MAX_FILE_SIZE" value="50MB" />
 	<property name="MAX_HISTORY" value="10"/>
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
