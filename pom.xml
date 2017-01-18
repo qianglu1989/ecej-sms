@@ -149,7 +149,7 @@
 		<dependency>
 			<groupId>com.nove</groupId>
 			<artifactId>ecej-core</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>1.2.0.RELEASE</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.apache.zookeeper</groupId>
