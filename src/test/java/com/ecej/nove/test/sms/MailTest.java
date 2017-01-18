@@ -23,12 +23,12 @@ public class MailTest {
 	@Test
 	public void sendMQ() {
 
-		for (int i = 0; i < 100; i++) {
+		for (int i = 0; i < 10; i++) {
 			BaseMail baseMail = new BaseMail();
 			baseMail.setTo(new String[] { "598505651@qq.com" });
 			baseMail.setSubject("这是一个神奇的网站");
 			baseMail.setText("这是一个一格" + i);
-			baseMail.setBcc(new String[] { "35329425@qq.com" });
+			baseMail.setCc(new String[] { "35329425@qq.com" });
 			rabbitTemplate.convertAndSend("mail", baseMail);
 			System.out.println("Sender : " + baseMail.getText());
 
