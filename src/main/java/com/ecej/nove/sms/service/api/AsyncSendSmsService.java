@@ -1,6 +1,6 @@
 package com.ecej.nove.sms.service.api;
 
-import com.ecej.nove.sms.po.SMSMessage;
+import com.ecej.nove.base.sms.SMSMessage;
 import com.ecej.nove.sms.po.SysSmsToSendPo;
 
 public interface AsyncSendSmsService {

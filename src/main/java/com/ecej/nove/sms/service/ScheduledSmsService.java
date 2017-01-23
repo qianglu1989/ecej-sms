@@ -10,8 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import com.ecej.nove.base.sms.SMSMessage;
 import com.ecej.nove.sms.dao.SmsBaseDao;
-import com.ecej.nove.sms.po.SMSMessage;
 import com.ecej.nove.sms.po.SysSmsToSendPo;
 import com.ecej.nove.sms.service.api.AsyncSendSmsService;
 

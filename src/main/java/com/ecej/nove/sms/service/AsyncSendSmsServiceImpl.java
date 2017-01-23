@@ -13,8 +13,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ecej.nove.base.sms.SMSMessage;
 import com.ecej.nove.sms.dao.SmsBaseDao;
-import com.ecej.nove.sms.po.SMSMessage;
 import com.ecej.nove.sms.po.SysSmsRecentRecordPo;
 import com.ecej.nove.sms.po.SysSmsSendHistoryPo;
 import com.ecej.nove.sms.po.SysSmsToSendPo;

@@ -13,7 +13,7 @@ import org.dom4j.Element;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.ecej.nove.sms.po.SMSMessage;
+import com.ecej.nove.base.sms.SMSMessage;
 import com.ecej.nove.utils.common.MD5Util;
 import com.ecej.nove.utils.common.PropertyBootConfig;
 import com.ecej.nove.utils.http.HttpClientUtils;

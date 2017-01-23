@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ecej.nove.base.sms.SMSMessage;
 import com.ecej.nove.sms.dao.SmsBaseDao;
-import com.ecej.nove.sms.po.SMSMessage;
 import com.ecej.nove.sms.po.SysSmsToSendPo;
 
 /**
@@ -24,7 +24,7 @@ import com.ecej.nove.sms.po.SysSmsToSendPo;
  *
  */
 @Service
-@RabbitListener(queues = "hello")
+@RabbitListener(queues = "ecejsmsss")
 public class SmsReceiverService {
 
 	private Logger LOG = LoggerFactory.getLogger(SmsReceiverService.class);
@@ -59,4 +59,8 @@ public class SmsReceiverService {
 
 	}
 
+	@RabbitHandler
+	public void ReceiverMessage(String sms) {
+		System.out.println(sms);
+	}
 }

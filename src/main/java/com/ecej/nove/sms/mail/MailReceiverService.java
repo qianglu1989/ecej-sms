@@ -20,7 +20,7 @@ import com.ecej.nove.sms.service.api.MailSendService;
  *
  */
 @Component
-@RabbitListener(queues = "mail")
+@RabbitListener(queues = "ecejmail")
 public class MailReceiverService {
 
 	private Logger LOG = LoggerFactory.getLogger(MailReceiverService.class);
