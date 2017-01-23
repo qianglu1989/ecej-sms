@@ -24,7 +24,7 @@ import com.ecej.nove.sms.po.SysSmsToSendPo;
  *
  */
 @Service
-@RabbitListener(queues = "ecejsmsss")
+@RabbitListener(queues = "ecejsms")
 public class SmsReceiverService {
 
 	private Logger LOG = LoggerFactory.getLogger(SmsReceiverService.class);
