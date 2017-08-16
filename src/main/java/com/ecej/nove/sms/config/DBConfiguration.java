@@ -39,13 +39,13 @@ public class DBConfiguration extends AbstractDruidDBConfig {
 	}
 
 	@Bean(name = "smsSqlSessionFactory")
-	public SqlSessionFactory sqlSessionFactory() throws Exception {
-		return super.sqlSessionFactory(dataSource());
+	public SqlSessionFactory sqlSessionFactory(DruidDataSource datasource) throws Exception {
+		return super.sqlSessionFactory(datasource);
 	}
 
 	@Bean
-	public PlatformTransactionManager transactionManager() throws SQLException {
-		return new DataSourceTransactionManager(dataSource());
+	public PlatformTransactionManager transactionManager(DruidDataSource datasource) throws SQLException {
+		return new DataSourceTransactionManager(datasource);
 	}
 
 }

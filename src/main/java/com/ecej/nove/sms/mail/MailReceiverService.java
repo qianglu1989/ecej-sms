@@ -11,16 +11,15 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.ecej.nove.base.mail.BaseMail;
-import com.ecej.nove.sms.service.api.MailSendService;
 
 /**
- * 接收短信入库
+ * 接收邮件信息
  * 
  * @author QIANG
  *
  */
 @Component
-@RabbitListener(queues = "mail")
+@RabbitListener(queues = "ecejmail")
 public class MailReceiverService {
 
 	private Logger LOG = LoggerFactory.getLogger(MailReceiverService.class);
@@ -43,11 +42,6 @@ public class MailReceiverService {
 			mailSendService.sendMailAndFile(mail);
 		}
 		LOG.info("Receiver Mail Obj !");
-	}
-
-	@RabbitHandler
-	public void ReceiverMessage(String mail) {
-		System.out.println(mail);
 	}
 
 }

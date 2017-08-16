@@ -1,9 +1,9 @@
 
 package com.ecej.nove.sms.po;
 
-import com.ecej.nove.base.po.BasePo;
+import java.io.Serializable;
 
-public class SysSmsSendHistoryPo extends BasePo {
+public class SysSmsSendHistoryPo implements Serializable {
 	private static final long serialVersionUID = 1L;
 	// alias
 	public static final String TABLE_ALIAS = "SysSmsSendHistory";

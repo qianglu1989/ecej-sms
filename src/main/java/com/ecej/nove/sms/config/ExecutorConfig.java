@@ -30,14 +30,28 @@ public class ExecutorConfig {
 	@Value("${sms.executor.queueCapacity}")
 	private int queueCapacity;
 
-	@Bean(name = "simpleAsync")
-	public Executor simpleAsync() {
+
+
+	@Bean(name = "mailAsync")
+	public Executor mailAsync() {
 		ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
 		executor.setCorePoolSize(corePoolSize);
 		executor.setMaxPoolSize(maxPoolSize);
 		executor.setQueueCapacity(queueCapacity);
 		executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
-		executor.setThreadNamePrefix("SmsExecutor-");
+		executor.setThreadNamePrefix("MailExecutor-");
+		executor.initialize();
+		return executor;
+	}
+
+	@Bean(name = "smsConsumer")
+	public Executor smsConsumer() {
+		ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+		executor.setCorePoolSize(corePoolSize);
+		executor.setMaxPoolSize(maxPoolSize);
+		executor.setQueueCapacity(queueCapacity);
+		executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
+		executor.setThreadNamePrefix("ConsumerExecutor-");
 		executor.initialize();
 		return executor;
 	}

@@ -1,11 +1,11 @@
 
 package com.ecej.nove.sms.po;
 
+import java.io.Serializable;
+
 import org.springframework.beans.BeanUtils;
 
-import com.ecej.nove.base.po.BasePo;
-
-public class SysSmsToSendPo extends BasePo {
+public class SysSmsToSendPo implements Serializable {
 	private static final long serialVersionUID = 1L;
 	// alias
 	public static final String TABLE_ALIAS = "SysSmsToSend";
